@@ -21,50 +21,50 @@
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Основы командной оболочки Bash">
-<meta property="og:url" content="http://zachgoll.github.io/blog/2019/bash-essentials/index.html">
+<meta property="og:url" content="blog/2019/bash-essentials/index.html">
 <meta property="og:site_name" content="Зак Голлвитцер">
 <meta property="og:description" content="Перед тем, как начать изучать командную болочку bash, есть несколько важных концепций, помимо основных команд, необходимых к изучению.  Помимо основ и управления доступом пользователей, необходимо изучить среду.">
 <meta property="og:locale" content="RU">
-<meta property="og:image" content="http://zachgoll.github.io/blog/2019/bash-essentials/vscode-search.png">
-<meta property="og:image" content="http://zachgoll.github.io/blog/2019/bash-essentials/digital-ocean-key.png">
-<meta property="og:image" content="http://zachgoll.github.io/blog/2019/bash-essentials/basic-web-search.jpg">
-<meta property="og:image" content="http://zachgoll.github.io/blog/2019/bash-essentials/ipaddresses.PNG">
-<meta property="og:image" content="http://zachgoll.github.io/blog/2019/bash-essentials/processes-linux.png">
-<meta property="og:image" content="http://zachgoll.github.io/blog/2019/bash-essentials/top-header.png">
+<meta property="og:image" content="blog/2019/bash-essentials/vscode-search.png">
+<meta property="og:image" content="blog/2019/bash-essentials/digital-ocean-key.png">
+<meta property="og:image" content="blog/2019/bash-essentials/basic-web-search.jpg">
+<meta property="og:image" content="blog/2019/bash-essentials/ipaddresses.PNG">
+<meta property="og:image" content="blog/2019/bash-essentials/processes-linux.png">
+<meta property="og:image" content="blog/2019/bash-essentials/top-header.png">
 <meta property="og:updated_time" content="2019-11-25T15:55:49.362Z">
 <meta name="twitter:card" content="Содержание">
 <meta name="twitter:title" content="Основы командной оболочки Bash">
 <meta name="twitter:description" content="Перед тем, как начать изучать командную болочку bash, есть несколько важных концепций, помимо основных команд, необходимых к изучению.  Помимо основ и управления доступом пользователей, необходимо изучить среду.">
-<meta name="twitter:image" content="http://zachgoll.github.io/blog/2019/bash-essentials/vscode-search.png">
-    
-    
-        
-          
-              <link rel="shortcut icon" href="/blog/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/blog/images/favicon-192x192.png" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
-          
-        
-    
+<meta name="twitter:image" content="blog/2019/bash-essentials/vscode-search.png">
+
+
+
+
+              <link rel="shortcut icon" href="blog/images/favicon.ico">
+
+
+
+
+            <link rel="icon" type="image/png" href="blog/images/favicon-192x192.png" sizes="192x192">
+
+
+
+
+            <link rel="apple-touch-icon" sizes="180x180" href="blog/images/apple-touch-icon.png">
+
+
+
     <!-- title -->
     <title>Основы командной оболочки Bash</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/blog/css/style.css">
+    <link rel="stylesheet" href="blog/css/style.css">
     <!-- rss -->
-    
-    
+
+
 </head>
 
 <body class="max-width mx-auto px3">
-    
+
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -72,24 +72,24 @@
   <span id="menu">
     <span id="nav">
       <ul>
-         
+
           <li><a href="http://zachgoll.github.io">Домашняя страница</a></li>
-         
-          <li><a href="/blog/archives/">Writing</a></li>
-         
-          <li><a href="http://zachgoll.github.io/portfolio">Projects</a></li>
-        
+
+          <li><a href="blog/archives/">Writing</a></li>
+
+          <li><a href="portfolio">Projects</a></li>
+
       </ul>
     </span>
     <br/>
     <span id="actions">
       <ul>
-        
-        <li><a class="icon" href="/blog/2019/ip-addresses-netmasks/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" href="/blog/2019/user-permissions/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
+
+        <li><a class="icon" href="blog/2019/ip-addresses-netmasks/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+
+
+        <li><a class="icon" href="blog/2019/user-permissions/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
@@ -98,16 +98,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zachgoll.github.io/blog/2019/bash-essentials/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;text=Bash Essentials"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;is_video=false&amp;description=Bash Essentials"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Bash Essentials&amp;body=Check out this article: http://zachgoll.github.io/blog/2019/bash-essentials/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;name=Bash Essentials&amp;description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=blog/2019/bash-essentials/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=blog/2019/bash-essentials/&amp;text=Bash Essentials"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=blog/2019/bash-essentials/&amp;is_video=false&amp;description=Bash Essentials"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Bash Essentials&amp;body=Check out this article: blog/2019/bash-essentials/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=blog/2019/bash-essentials/&amp;name=Bash Essentials&amp;description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -117,12 +117,12 @@
   </span>
 </div>
 
-    
+
     <div class="content index my4">
-        
+
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
-    
+
     <h1 class="posttitle" itemprop="name headline">
         Основы командной оболочки Bash
     </h1>
@@ -133,32 +133,32 @@
       <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
         <span itemprop="name">Зак Голлвитцер</span>
       </span>
-      
+
     <div class="postdate">
         <time datetime="2019-02-03T21:50:19.000Z" itemprop="datePublished">2019-02-03</time>
     </div>
 
 
-      
+
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/blog/tags/linux/">linux</a>
+        <a class="tag-link" href="blog/tags/linux/">linux</a>
     </div>
 
 
     </div>
   </header>
-  
+
 
   <div class="content" itemprop="articleBody">
-    <p>Перед тем, как начать изучать командную болочку bash, есть несколько важных концепций, помимо основных команд, необходимых к изучению. Перед освоением <a href>основ</a> и управления <a href="/blog/2019/user-permissions/">правами пользователя</a> необходимо изучить переменные среды, псевдонимы и некоторые более сложные команды, относящиеся к сетям, управлению процессами, ssh и сценариям.</p>
+    <p>Перед тем, как начать изучать командную болочку bash, есть несколько важных концепций, помимо основных команд, необходимых к изучению. Перед освоением <a href>основ</a> и управления <a href="blog/2019/user-permissions/">правами пользователя</a> необходимо изучить переменные среды, псевдонимы и некоторые более сложные команды, относящиеся к сетям, управлению процессами, ssh и сценариям.</p>
 <h1 id="Environment-variables"><a href="#Environment-variables" class="headerlink" title="Переменные среды"></a>Переменные среды</h1><iframe width="560" height="315" src="https://www.youtube.com/embed/5e-kS5LkByc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <p>Переменная среды может быть глобальной или локальной. Глобальная переменная среды - это переменная, которая устанавливается при инициализации оболочки и может использоваться во всех дочерних скриптах.  Сеансовая (локальная) переменная среды - это переменная, которая устанавливается во время конкретного сеанса оболочки и стирается при его закрытии. Чтобы создать сеансовую переменную среды надо export-ировать ее в текущую оболочку.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> MY_VARIABLE=<span class="string">"значение"</span></span><br></pre></td></tr></table></figure>
 <p>Ее можно использовать пока оболочка все еще открыта.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$MY_VARIABLE</span> <span class="comment"># значение</span></span><br></pre></td></tr></table></figure>
-<p>Как только вы закроете оболочку, переменная более не будет доступна. Чтобы сделать переменную глобальной, ее помещают в один из файлов конфигурации bash. Рекомендуется поместить ее в <code>~/.profile</code>-файл, как описано в <a href="/blog/2019/user-permissions/">в этом руководстве</a>.</p>
+<p>Как только вы закроете оболочку, переменная более не будет доступна. Чтобы сделать переменную глобальной, ее помещают в один из файлов конфигурации bash. Рекомендуется поместить ее в <code>~/.profile</code>-файл, как описано в <a href="blog/2019/user-permissions/">в этом руководстве</a>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ~/.profile</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> GLOBAL_VARIABLE=<span class="string">"значение"</span></span><br></pre></td></tr></table></figure>
 <p>Чтобы увидеть все переменные текущего сеанса (как локальные, так и глобальные), можно запустить команду</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env</span><br></pre></td></tr></table></figure>
@@ -197,7 +197,7 @@
 </ul>
 <h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><p>Grep - это инструмент, который ищет шаблоны или слова в одном или нескольких файлах. Программа существует в двух версиях: BSD и GNU. В системах Mac используются BSD-вариянт, системы с Linux - GNU. В рассмотренных далее примерах различия между этими версиями не заметны, но если вдруг в той или иной операционной системе что-то пойдет не по плану, надо уточнить свойства конкретной версии. Например, могут отличаться определенные типы регулярных выражений.</p>
 <p>Grep можно воспринимать как инструмент поиска, встроенный в командную строку. В современных средах программирования (текстовых редакторах) есть много инструментов поиска. Например, в Visual Studio Code Editor можно использовать строку поиска для того, чтобы искать в файлах проекта определенное слово или даже соответствие регулярному выражению. В результате редактором перечисляются файлы, в которых было найдено выражение, указывается строка, где оно было найдено и т.д.</p>
-<img src="/blog/2019/bash-essentials/vscode-search.png">
+<img src="blog/2019/bash-essentials/vscode-search.png">
 <p>В этом примере, автор искал в своем блоге слово "grep" и нашел его в трех разных файлах. Но что делать, если VSCode недоступен? Такое может быть, если вы управляете удаленной машины, или, просто, к этой удивительной функции поиска нет доступа? В этом случае grep просто незаменим. Основной синтаксис для использования grep следующий: </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [все опции и ключи здесь] <span class="string">"текст, который ищется"</span> &lt;имя-файла-где-ищем&gt;</span><br></pre></td></tr></table></figure>
 <p>Например, попробуем найти имя пользователя в файле <code>/etc/passwd</code> (где хранятся все пользователи в системе).</p>
@@ -460,7 +460,7 @@
 <p>Теперь нужно вывести на экран и скопировать в буфер обмена открытую часть ключа. Для этого надо набрать команду: </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_digitalocean_rsa.pub</span><br></pre></td></tr></table></figure>
 <p>Обращаем внимание на <code>.pub</code> в конце. Каждый раз, как содается пара ключей, один их них, <code>.pub</code>, всегда присутствует. Скопировав содержимое этого файла, вставьте его в поле ключа SSH в соответствующее поле при регистрации виртуальной машины хостинг-провайдере. В Digital Ocean это делается так.</p>
-<img src="/blog/2019/bash-essentials/digital-ocean-key.png">
+<img src="blog/2019/bash-essentials/digital-ocean-key.png">
 <p>Как только это сделано, можете создавать свою виртуальную машину. Теперь надо найти IP-адрес новой виртуальной машины и ввести в терминале следующую команду.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p 22 root@157.230.167.2</span><br></pre></td></tr></table></figure>
 <p>Эта команда должна подключить текущий терминал к новому VPS.  </p>
@@ -503,7 +503,7 @@
 <p>Иногда модем и маршрутизатор - это одно и то же, но здесь они разделены для лучшего понимания темы. К концу раздела <em> вы получите понимание на высоком уровне, что происходит, когда вы набираете <a href="http://www.thediygolfer.com"" target="_blank" rel="noopener">“www.thediygolfer.com"</a> в браузере</em> . Выбран именно этот сайт, потому что он принадлежит Заку (автору данного руководства). Это позволит понять компоненты, составляющие технологии. Эти концепции сложно объяснить с помощью сложных веб-сайтов, таких как <a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a> потому что их инфраструктура очень сложна. Эти же концепции применимы независимо от того, какой веб-сайт вы посещаете, но будем следовать правилу "как можно проще".</p>
 <p><em>Примечание: некоторые IP-адреса и адреса серверов изменены на протяжении всего руководства, чтобы защитить конфиденциальность Зака, однако указанные изменения не влияют концептуально на излагаемый материал.</em></p>
 <p>Начнем с диаграммы, которая демонстрирует процесс поиска веб-сайта.</p>
-<img src="/blog/2019/bash-essentials/basic-web-search.jpg">
+<img src="blog/2019/bash-essentials/basic-web-search.jpg">
 <p>Каждый фрагмент технологии пронумерован и иллюстрирует общий поток информации при выполнении поиска в Интернете. В большинстве случаев все начинается с шага №1, тут необходимо понимать, что такое интернет-провайдер (ISP) и какие услуги он предоставляет. Сервисы интернет-провайдеров во многих случаях сбивают с толку, потому что они предлагают несколько услуг, здесь будем считать, что интернет-провайдеры предлагает только доступ Интернет в качестве услуги. Интернет-провайдер - это компания, которая владеет оборудованием и подключает к этому оборудованию клиентов, таким образом предоставляя ему интернет-услуги. О каком оборудовании мы говорим? Многие интернет-провайдеры имеют оборудование для передачи аналоговых сигналов, известных как «Интернет».</p>
 <ul>
 <li>Коаксиальные кабели, что сейчас уже не встречается</li>
@@ -528,8 +528,8 @@
 <p>Любой из этих трех серверов будет знать, какой IP-адрес соответствует <code>thediygolfer.com</code>. На этом этапе мой маршрутизатор запустил сервер OpenDNS по умолчанию для поиска<code> thediygolfer.com</code>, но не сумев найти его, OpenDNS перенаправил маршрутизатор в базу данных корневого домена, который, затем, нашел домен и перешел на серверы имен Digital Ocean, точно знающие, где находится физический сервер сайта. Маршрутизатор рассчитает самый быстрый путь до цели и перешлет пакет запроса в соответствующем направлении.</p>
 <p>С другой стороны, сервер, на котором работает веб-сайт, найдет запрошенный HTML-документ (домашняя страница), упакует его и отправит обратно на запрашивающий IP-адрес (мой компьютер). Пакеты будут доставлены на домашний маршрутизатор, но как маршрутизатор узнает, где находится компьютер? Здесь подходим к локальным сетям.  </p>
 <p>Маршрутизатор представляет собой «локальную сеть» и фактически имеет динамический внешний IP-адрес (DHCP), который время от времени меняться провайдером. Это нормально, потому что отосланный запрос имеет текущий IP-адрес домашней сети, и поэтому сервер, отправляющий информацию, найдет эту сеть. Как только он находит сеть, маршрутизатор отвечает за маршрутизацию информации на нужное устройство в локальной сети.</p>
-<p>В доме есть несколько устройств (ноутбук, настольный компьютер, принтер и т.д.), Поэтому для каждого устройства в домашней сети потребуется свои IP-адреса. Было бы сложно управлять новым IP-адресом для каждого устройства в "дикой природе", но с нашей локальной сетью это просто. Сеть имеет IP-адрес, который называется «шлюзом по умолчанию». Этот IP-адрес представляет все устройства в сети, через него уходит и входит трафик Интернет. Внутри локальной сети каждое устройство имеет уникальный IP-адрес в пределах адресного пространства локальной сети, заданного соответствующей маской. Эту тему невозможно понять без усвоения сетевых технологий. Для более глубокого усвоения темы есть <a href="/blog/2019/ip-addresses-netmasks">отдельный пост</a>, который предназначен тем, кому интересно. Если вы решите не тратить время на читение, вот некоторые заметки и диаграмма:</p>
-<img src="/blog/2019/bash-essentials/ipaddresses.PNG">
+<p>В доме есть несколько устройств (ноутбук, настольный компьютер, принтер и т.д.), Поэтому для каждого устройства в домашней сети потребуется свои IP-адреса. Было бы сложно управлять новым IP-адресом для каждого устройства в "дикой природе", но с нашей локальной сетью это просто. Сеть имеет IP-адрес, который называется «шлюзом по умолчанию». Этот IP-адрес представляет все устройства в сети, через него уходит и входит трафик Интернет. Внутри локальной сети каждое устройство имеет уникальный IP-адрес в пределах адресного пространства локальной сети, заданного соответствующей маской. Эту тему невозможно понять без усвоения сетевых технологий. Для более глубокого усвоения темы есть <a href="blog/2019/ip-addresses-netmasks">отдельный пост</a>, который предназначен тем, кому интересно. Если вы решите не тратить время на читение, вот некоторые заметки и диаграмма:</p>
+<img src="blog/2019/bash-essentials/ipaddresses.PNG">
 <ul>
 <li>Ваш интернет-провайдер назначает вашей сети IP-адрес и маску подсети. Их объединение дает адрес «сети» или «шлюза по умолчанию». Другими словами, IP-адрес состоит из двух частей - идентификатора сети и идентификатора «адресного пространства» сети.</li>
 <li>Маски подсети используются для экономии адресного пространства, используемого одной сетью. Адресное пространство - это диапазон IP-адресов, доступных для устройств в сети (например, 192.0.168.1, 192.0.168.2, 192.0.168.3, 192.0.168.4,…, 192.0.168.254)</li>
@@ -539,7 +539,7 @@
 <h3 id="ifconfig"><a href="#ifconfig" class="headerlink" title="Утилита ifconfig"></a>Утилита ifconfig</h3><p>Команда ifconfig предоставит нам информацию о домашней локальной сети, которую мы только что обсудили. Эту команду также можно использовать для установки новых настроек, но нам достаточно просто посмотреть на результат. Наберите <code>ifconfig</code> в терминале, в результате получится результат, похожий на следующий.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">enp37s0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500</span><br><span class="line">        ether 70:85:c2:7c:ff:f2  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">enx000f00de66da: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet &lt;hidden for privacy&gt;  netmask 255.255.255.0  broadcast &lt;hidden for privacy&gt;</span><br><span class="line">        inet6 &lt;hidden for privacy&gt;  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 00:0f:00:de:66:da  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 265073  bytes 821138812 (821.1 MB)</span><br><span class="line">        RX errors 0  dropped 1451  overruns 0  frame 0</span><br><span class="line">        TX packets 44132  bytes 102041651 (102.0 MB)</span><br><span class="line">        TX errors 0  dropped 2100 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 752935  bytes 54372769 (54.3 MB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 752935  bytes 54372769 (54.3 MB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></table></figure>
 <p>В данной конфигурации есть три записи. Нижняя запись, относящаяся к интерфейсу «lo», представляет собой конфигурацию интерфейса обратной связи, его адрес 127.0.0.1, localhost, он обычно используется для разработки веб-приложений. Первая запись «enp37s0» кажется пустой конфигурацией. Средняя запись «enx000f00de66da» отображает IP-адрес устройства, подключенного к маршрутизатору (локальной сети), маску подсети и широковещательный адрес этой сети.  </p>
-<p>Вот где <a href="/blog/2019/ip-addresses-netmasks">понимание IP-адресов и подсетей в локальной сети</a> полезно, потому что указанный адрес INET на самом деле не является общедоступным IP-адресом, распознаваемым маршрутизаторами Интернета. Этот IP-адрес является <em>локальным</em>, который нужно преобразовать во "внешний" IP-адрес сети, объединив его с маской подсети. Также указан широковещательный адрес, но он легко получается его из IP-адреса и маски подсети.</p>
+<p>Вот где <a href="blog/2019/ip-addresses-netmasks">понимание IP-адресов и подсетей в локальной сети</a> полезно, потому что указанный адрес INET на самом деле не является общедоступным IP-адресом, распознаваемым маршрутизаторами Интернета. Этот IP-адрес является <em>локальным</em>, который нужно преобразовать во "внешний" IP-адрес сети, объединив его с маской подсети. Также указан широковещательный адрес, но он легко получается его из IP-адреса и маски подсети.</p>
 <p>Если я наберу ifconfig на другом компьютере в своей сети, широковещательный адрес и маска подсети не изменятся, но IP-адрес изменится. Также есть данные, такие как максимальный размер пакета (MTU) и счетчики пакетов RX/TX, которые указывают, сколько пакетов было передано в локальную сеть и из нее. Эти значения постоянно увеличиваться.</p>
 <h3 id="ping"><a href="#ping" class="headerlink" title="Программа ping"></a>Программа ping</h3><p>Программа <code>ping</code> - это базовая утилита, используемая для проверки связи между устройствами в локальной сети или даже между устройствами за пределами локальной сети. Команда полезна в случаях отсутствия браузера для проверки подключения к Интернету. У команды есть различные флаги, но единственное, что вам нужно знать сейчас, - это флаг <code>-c</code>, позволяющий указывать количество пакетов, которые мы хотим отправить серверу.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping -c 5 thediygolfer.com</span><br></pre></td></tr></table></figure>
@@ -598,7 +598,7 @@
 </ol>
 <p>После загрузки компьютера ядро операционной системы функционирует постоянно. Ядро постоянно отслеживает состояние всех процессов на компьютере и выделяет им периодически те или иные системные ресурсы Процессы конкурируют за системные ресурсы, вытесняя друг друга. Верьте или нет, при запуске программы, например, Google Chrome, ядро даст ему ресурсы в течение нескольких микросекунд, а затем произойдет "переключение контекстов", и эти же ресурсы будут на время отданы другому процессу. Если Google Chrome завхватит 100% ресурсов во все 100% времени, компьютер, вероятно, выкинит Google из пямяти компьютера потому, что в ядре есть разные фцнкции поддеривающих функционирование операционной системы.</p>
 <h3 id="Processes-Behind-the-Scenes"><a href="#Processes-Behind-the-Scenes" class="headerlink" title="Закулисы процессов"></a>Закулисы процессов</h3><p>Можно перечислять все возможные команды, но в этом нет особого смысла, если не понимать последовательность функций, которые выполняет bash и ядро операционной системы при создании нового процесса. Когда компьютер запускается, ядро запускает процесс под названием "init", который в UNIX-системах обычно называется также <code>init</code>, расположенный в <code>/sbin/init</code>. В современных дистрибутивах этот скрипт находится в пакете <a href="https://en.wikipedia.org/wiki/Systemd" target="_blank" rel="noopener">systemd</a>. Как только вы изучите процедуру загрузки системы, вы поймете, что происходит за кулисами на компьютере. Каждый процесс может начать другой процесс (обычно терминал начинает новый процесс в результате введенной команды), сначала создавая свою копию, а затем выполняя новую команду в адресном пространстве скопированного процесса. Вот иллюстрация, поясняющая вышесказанное: </p>
-<img src="/blog/2019/bash-essentials/processes-linux.png">
+<img src="blog/2019/bash-essentials/processes-linux.png">
 <p>Можно отследить этот процесс в терминале самостоятельно, используя <code>strace()</code> команду. Обратите внимание - эта команда доступна только на Linux. Эквивалентная команда на Mac - <code>dtruss</code>, но она работает по-другому.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strace ls</span><br></pre></td></tr></table></figure>
 <p>Эта команда позволяет увидеть все системные вызовы, которые были выполнены при запуске <code>ls</code>. Команда <code>ls</code> на самом деле - это просто еще один процесс операционной системы. Результат работы <code>strace ls</code>, представленный ниже, обработан, так, чтобы обращать внимание читателяна наиболее важные части.</p>
@@ -632,7 +632,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Останавливает процесс</span></span><br><span class="line"><span class="built_in">kill</span> -s SIGSTOP 211124</span><br><span class="line"></span><br><span class="line"><span class="comment"># Запускает процесс</span></span><br><span class="line"><span class="built_in">kill</span> -s SIGCONT 211124</span><br><span class="line"></span><br><span class="line"><span class="comment"># Перевод процесса в фоновый режим</span></span><br><span class="line"><span class="built_in">fg</span> %1</span><br></pre></td></tr></table></figure>
 <h3 id="ps-and-top-commands-system-performance-management"><a href="#ps-and-top-commands-system-performance-management" class="headerlink" title="Команды ps и top (управление общей производительностью системы)"></a>Команды ps и top (управление общей производительностью системы)</h3><p>Есть две команды, показывающие процессы, выполняемые в настоящее время на нашем компьютере. В 99% случаев эти команды взаимозаменяемы. Разница между командами заключается в уровне интерактивности, опыт показывает, что используются они часто и обе. Например, при запускае <code>top</code> получаем список процессов. Этот список не просто выдается, но и отслеживает статус каждого процесса в реальном времени. Поскольку top интерактивен, другие сценарии не могут использовать его для получения информации о процессах без специальных настроек (т.е. с использованием «пакетного» режима). Вот где пригодится команда <code>ps</code>. Команда используется внутри скриптов bash для получения необходимой информации. Поскольку мы не собираемся разрабатывать сложные скрипты использования процессов, первую очередь упор сделаем на <code>top</code>, поскольку она является более удобной для пользователя. Можно изучить страницы руководства man для команды <code>ps</code>, где перечисляются эквивалентные команды тем, о которых далее идет речь, например, <code>ps ax</code> распечатывает все ваши текущие процессы.</p>
 <p>Приоритетом в изучении здесь является интерфейс команды <code>top</code> и что нужно искать на экране. Программа top - это не просто команда bash, она имеет свои собственные обширные возможности. Обычные пользователи bash не используют большинство этих возможностей, приведем самые полезные.</p>
-<img src="/blog/2019/bash-essentials/top-header.png">
+<img src="blog/2019/bash-essentials/top-header.png">
 <p>При первом запуске программы top, экран заполнится информацией, как на рисунке. Экран включает пять строк, начиная с верхней строки (1) и заканчивая нижней строкой (5), разберем, какую информацию они отображают.</p>
 <ol>
 <li>Общая информация</li>
@@ -688,7 +688,7 @@
 <p>Это запустит<code> Гугл Хром</code> исполняемый файл (открывает окно Google Chrome) и отслеживает, сколько реального, пользовательского и системного времени было использовано для этого исполняемого файла. Реальное (real) время - это общее время, затраченное на выполнение программы. Пользовательское (user) время - это время, необходимое для исполнения кода программы, а системное (system) время - это время, в течение которого ядро использовало системные ресурсы для обеспечения сервиса браузеру. Следующая формула показывает, сколько времени процесс простаивал из-за отсутствия доступа к ресурсам.</p>
 <p>Время ожидания = Real - User - System</p>
 <p>Трудно определить точное время ожидания без специального тестирования производительности, но для грубой оценки wait вполне подходит.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Заключение"></a>Заключение</h2><p>Трудно в это поверить, но данный пост автор таки закончил. К данному моменту у вас должен сформироваться набор навыков среднего - продвинутого уровня использования оболочки bash, вы должны быть в курсе того, что такое <a href="/blog/2019/user-permissions/">users, groups, и permissions</a>. Надеюсь, что у вас рано илии позно будет высокий уровень понимания bash и даже Linux.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Заключение"></a>Заключение</h2><p>Трудно в это поверить, но данный пост автор таки закончил. К данному моменту у вас должен сформироваться набор навыков среднего - продвинутого уровня использования оболочки bash, вы должны быть в курсе того, что такое <a href="blog/2019/user-permissions/">users, groups, и permissions</a>. Надеюсь, что у вас рано илии позно будет высокий уровень понимания bash и даже Linux.</p>
 
   </div>
 </article>
@@ -701,19 +701,19 @@
 
 
     </div>
-    
+
       <div id="footer-post-container">
   <div id="footer-post">
 
     <div id="nav-footer" style="display: none">
       <ul>
-         
+
           <li><a href="http://zachgoll.github.io">Домашняя страница</a></li>
-         
-          <li><a href="/blog/archives/">Writing</a></li>
-         
-          <li><a href="http://zachgoll.github.io/portfolio">Projects</a></li>
-        
+
+          <li><a href="blog/archives/">Writing</a></li>
+
+          <li><a href="portfolio">Projects</a></li>
+
       </ul>
     </div>
 
@@ -723,16 +723,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zachgoll.github.io/blog/2019/bash-essentials/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;text=Bash Essentials"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;is_video=false&amp;description=Bash Essentials"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Bash Essentials&amp;body=Check out this article: http://zachgoll.github.io/blog/2019/bash-essentials/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zachgoll.github.io/blog/2019/bash-essentials/&amp;name=Bash Essentials&amp;description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=blog/2019/bash-essentials/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=blog/2019/bash-essentials/&amp;text=Bash Essentials"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=blog/2019/bash-essentials/&amp;is_video=false&amp;description=Bash Essentials"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Bash Essentials&amp;body=Check out this article: blog/2019/bash-essentials/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=blog/2019/bash-essentials/&amp;title=Bash Essentials"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=blog/2019/bash-essentials/&amp;name=Bash Essentials&amp;description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -744,7 +744,7 @@
   </div>
 </div>
 
-    
+
     <footer id="footer">
   <div class="footer-left">
     Copyright © 2019 Зак Голлвитцер
@@ -752,13 +752,13 @@
   <div class="footer-right">
     <nav>
       <ul>
-         
+
           <li><a href="http://zachgoll.github.io">Домашняя страница</a></li>
-         
-          <li><a href="/blog/archives/">Writing</a></li>
-         
-          <li><a href="http://zachgoll.github.io/portfolio">Projects</a></li>
-        
+
+          <li><a href="blog/archives/">Writing</a></li>
+
+          <li><a href="portfolio">Projects</a></li>
+
       </ul>
     </nav>
   </div>
@@ -767,13 +767,13 @@
 </body>
 </html>
 <!-- styles -->
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/fontawesome-all.min.css">
-<link rel="stylesheet" href="/blog/lib/justified-gallery/css/justifiedGallery.min.css">
+<link rel="stylesheet" href="blog/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="blog/lib/justified-gallery/css/justifiedGallery.min.css">
 
 <!-- jquery -->
-<script src="/blog/lib/jquery/jquery.min.js"></script>
-<script src="/blog/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
-<script src="/blog/js/main.js"></script>
+<script src="blog/lib/jquery/jquery.min.js"></script>
+<script src="blog/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="blog/js/main.js"></script>
 <!-- search -->
 
 <!-- Google Analytics -->
@@ -800,5 +800,3 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
-
-

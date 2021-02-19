@@ -1,0 +1,8 @@
+127.0.0.1 localhost localhost.localdomain
+127.0.1.1  node179
+127.0.1.2  node179.localdomain
+::1 localhost localhost.localdomain  node179  node179.localdomain
+fd39:470:0db8:3333:172:27:14:179 node179-6 
+2001:470:0db8:3333:172:27:14:179 node179-g 
+172.27.14.1 gw node1
+fd39:470:0db8:3333:172:27:14:1 gw node1

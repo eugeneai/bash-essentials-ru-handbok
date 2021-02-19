@@ -1,0 +1,8 @@
+127.0.0.1 localhost localhost.localdomain
+127.0.1.1 backup node182
+127.0.1.2 backup.localdomain node182.localdomain
+::1 localhost localhost.localdomain backup node182 backup.localdomain node182.localdomain
+fd39:470:0db8:3333:172:27:14:182 node182-6 backup-6
+2001:470:0db8:3333:172:27:14:182 node182-g backup-g
+172.27.14.1 gw node1
+fd39:470:0db8:3333:172:27:14:1 gw node1

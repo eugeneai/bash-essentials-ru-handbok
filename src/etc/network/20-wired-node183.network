@@ -1,0 +1,27 @@
+# /etc/systemd/network/20-wired-node183.network
+[Match]
+MACAddress=04:D4:C4:AA:36:54
+[Network]
+Domains=localdomain example.com
+IPForward=yes
+DNS=172.27.100.5 8.8.8.8
+# Также позволить узлам настраиваться самостоятельно
+IPv6AcceptRA=yes
+[Address]
+Address=172.27.14.183
+Address=fd39:470:0db8:3333:172:27:14:183/64
+Address=2001:470:0db8:3333:172:27:14:183/64
+[Route]
+Gateway=172.27.14.1
+Destination=0.0.0.0
+[Route]
+Gateway=fd39:470:0db8:3333::172:27:14:1
+# fc0::/7 включает в себя fd39:470:0db8:3333:172:27:14:183/64
+Destination=fc0::/7
+[Route]
+Gateway=fd39:470:0db8:3333::172:27:14:1
+# 2000::/3 включает в себя весь глобальный IPv6 Интернет
+Destination=2000::/3
+[IPv6AcceptRA]
+UseDNS=yes
+UseDomain=yes

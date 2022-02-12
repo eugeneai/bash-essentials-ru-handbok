@@ -1,5 +1,7 @@
-\documentclass[12pt]{article}
-\usepackage[a4paper]{subook}
+\documentclass[a4paper,12pt,final]{book}
+% \usepackage[a4paper,firacode,smalltitles,handbook,microtyping]{subook}
+% \usepackage[a4paper,firacode,smalltitles,732,microtyping]{subook}
+\RequirePackage{subook}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -21,19 +23,23 @@
 \usemintedstyle{tango}
 
 \begin{document}
+\mainmatter
+\thispagestyle{empty}
+$ $
+\vfill
 
-
-Copyright © 2019 Зак Голлвитцер
+\noindent Copyright © 2019 Зак Голлвитцер\\
 Copyright © 2021 Евгений Черкашин
 
 \clearpage
 
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{1}
+\renewcommand{\contentsname}{Содержание}
 \tableofcontents
 
 \clearpage
 
-\section*{Предисловие от составителя пособия}
+\chapter*{Предисловие от составителя пособия}
 % \addcontentsline{toc}{section}{Предисловие от составителя пособия}
 
 Данный методический материал создан путем перевода текста, опубликованному в виде \href{https://zachgoll.github.io/blog/2019/bash-essentials/}{данного поста} его первоначальным автором Заком Голлвитцером (Zach Gollwitzer). Перевод осуществлен при помощи системы CAT (Computer Aided Translation) OmegaT и единственного на данный момент бесплатного сервера \href{https://mymemory.translated.net/}{MyMemory}. Автор перевода, также по совмещению являющийся соавтором данного пособия, подверг первоначальный стиль существенной переработке, стараясь сделать его в большей степени соответствующим к стандартам публикации учебных пособий в образовательной системе РФ, но сохраняя, по возможности, уместные эмоциональные моменты. Не все конечно удалось довести до некоторого совершенства, поэтому оставлю проект открытым к редактированию на сайте \href{https://www.overleaf.com/project/602cc04c00be7fbbe118f862}{Overleaf} для дальнейшего редактирования и совершенствования стиля.
@@ -44,13 +50,15 @@ Copyright © 2021 Евгений Черкашин
 
 \vspace{3em}
 \begin{flushright}\it
-  Канд. техн. наук, доцент ИрНИТУ, Е.А.Черкашин
+  Канд. техн. наук, \\
+  старший научный сотрудник лаб.~комплексных информационных\\ систем ИДСТУ СО РАН им.~В.~М.~Матросова,\\
+  доцент лаб.~лаборатории аппаратных и программных\\ средств вычислительной техники ИИТиАД ИрНИТУ,\\ зав.~каф. информационных технологий ИМИТ ИГУ\\ Е.А.Черкашин
 \end{flushright}
 
 \clearpage
 
 \hypertarget{Environment-variables}{%
-\section{\texorpdfstring{\protect\hyperlink{Environment-variables}{}Базовый уровень}{Базовый уровень}}\label{Environment-variables}}
+\chapter{Базовый уровень}\label{Environment-variables}}
 
 Перед тем, как начать изучать командную оболочку bash, есть несколько
 важных концепций, помимо основных команд, необходимых к изучению. К ним относятся переменные среды, псевдонимы и некоторые более сложные команды, относящиеся к сетям, управлению процессами, ssh и сценариям.
@@ -91,7 +99,7 @@ env
 \end{minted}
 
 % \hypertarget{Shell-Variables}{%
-% \subsection{\texorpdfstring{\protect\hyperlink{Shell-Variables}{}Переменные
+% \section{\texorpdfstring{\protect\hyperlink{Shell-Variables}{}Переменные
 % среды и оболочки}{Переменные среды и оболочки}}\label{Shell-Variables}}
 
 % Пользователи bash часто путаются, говоря о переменных \emph{среды} и
@@ -113,7 +121,7 @@ env
 % \end{minted}
 
 \hypertarget{PATH-variable}{%
-\subsection{\texorpdfstring{\protect\hyperlink{PATH-variable}{}Переменная
+\section{\texorpdfstring{\protect\hyperlink{PATH-variable}{}Переменная
 PATH}{Переменная PATH}}\label{PATH-variable}}
 
 Самая важная глобальная переменная среды, которую очень часто
@@ -190,7 +198,7 @@ source ~/.profile
 \end{minted}
 
 \hypertarget{Common-Commands}{%
-\subsection{\texorpdfstring{\protect\hyperlink{Common-Commands}{}Основные
+\section{\texorpdfstring{\protect\hyperlink{Common-Commands}{}Основные
 команды}{Основные команды}}\label{Common-Commands}}
 
 Помимо основных команд, таких как \texttt{cd}, \texttt{ls},
@@ -214,7 +222,7 @@ source ~/.profile
 \end{itemize}
 
 \hypertarget{grep}{%
-  \subsubsection{\texorpdfstring{\protect\hyperlink{grep}{}Программа grep}{Программа grep}}\label{grep}}
+  \subsection{\texorpdfstring{\protect\hyperlink{grep}{}Программа grep}{Программа grep}}\label{grep}}
 
 Команда Grep -- это инструмент, который позволяет искать слова или строки по специальным шаблонам (регулярным выражениям) в одном или нескольких текстовых файлах. Программа существует в двух версиях: BSD и GNU. В системах Mac используются BSD-вариант, системы с Linux - GNU. В рассмотренных далее примерах различия между этими версиями не заметны, но если вдруг в той или иной операционной системе что-то пойдет не по
 плану, надо уточнить свойства конкретной версии. Например, могут отличаться определенные типы регулярных выражений.
@@ -284,7 +292,7 @@ sudo cat /etc/passwd | grep --color -E "^[a-z]{3}:"
 желания ждать, пока он загрузится.
 
 \hypertarget{awk-and-sed}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{awk-and-sed}{}Утилиты
+\subsection{\texorpdfstring{\protect\hyperlink{awk-and-sed}{}Утилиты
 awk и sed}{Утилиты awk и sed}}\label{awk-and-sed}}
 
 В настоящее время, \texttt{awk} и \texttt{sed} являются предметом споров
@@ -478,7 +486,7 @@ awk               -F " " '   BEGIN    { print "Date\t\tPrice\t\tVolume" }; \
 возможность избегать такого варианта обработки информации.
 
 \hypertarget{Less}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{Less}{}Программа
+\subsection{\texorpdfstring{\protect\hyperlink{Less}{}Программа
 Less}{Программа Less}}\label{Less}}
 
 Программа \texttt{less} -- одна из тех утилит командной строки, которую вы
@@ -523,7 +531,7 @@ less some-large-file.txt
 редактор недоступен или медленнее, чем нужно, грузится.
 
 \hypertarget{find-and-exec}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{find-and-exec}{}Команды
+\subsection{\texorpdfstring{\protect\hyperlink{find-and-exec}{}Команды
 find и exec}{Команды find и exec}}\label{find-and-exec}}
 
 На первый взгляд, команда \texttt{find} очень сильно похожа на \texttt{grep}, но ее
@@ -633,7 +641,7 @@ man find | less
 вы ведите, как неимоверно крута эта команда!
 
 \hypertarget{tar-gzip-gunzip}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{tar-gzip-gunzip}{}Команды
+\subsection{\texorpdfstring{\protect\hyperlink{tar-gzip-gunzip}{}Команды
 tar, gzip, gunzip}{Команды tar, gzip, gunzip}}\label{tar-gzip-gunzip}}
 
 Эти утилиты по сравнению с \texttt{find} очень просты в эксплуатации и используются
@@ -668,8 +676,7 @@ gunzip archive.tar.gz
 архивирования и сжатия.
 
 \hypertarget{Advanced-Bash}{%
-\section{\texorpdfstring{\protect\hyperlink{Advanced-Bash}{}Bash, новый
-уровень}{Bash, новый уровень}}\label{Advanced-Bash}}
+\chapter{Bash, новый уровень}\label{Advanced-Bash}}
 
 Не все из вышеперечисленного относится непосредственно к концепциям
 bash, но их важно знать, даже если они не используются ежедневно. То,
@@ -692,7 +699,7 @@ bash, но их важно знать, даже если они не испол�
 \end{itemize}
 
 \hypertarget{Regular-Expressions}{%
-\subsection{\texorpdfstring{\protect\hyperlink{Regular-Expressions}{}Регулярные
+\section{\texorpdfstring{\protect\hyperlink{Regular-Expressions}{}Регулярные
 выражения}{Регулярные выражения}}\label{Regular-Expressions}}
 
 Есть мнение, что язык регулярных выражений сложнее, чем он должен быть.
@@ -1137,7 +1144,7 @@ echo "regexp..." | grep -P "^regexp[.]+"
 решать задачи.
 
 \hypertarget{Detailed-Example-Regular-Expression}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{Detailed-Example-Regular-Expression}{}Подробный
+\subsection{\texorpdfstring{\protect\hyperlink{Detailed-Example-Regular-Expression}{}Подробный
 пример использования регулярного
 выражения}{Подробный пример использования регулярного выражения}}\label{Detailed-Example-Regular-Expression}}
 
@@ -1268,7 +1275,7 @@ cat email-addresses.txt | grep -P "^.+@\w+(.com|.net){1}$"
 почты!
 
 \hypertarget{Bash-Scripting}{%
-\subsection{\texorpdfstring{\protect\hyperlink{Bash-Scripting}{}Сценарии
+\section{\texorpdfstring{\protect\hyperlink{Bash-Scripting}{}Сценарии
 Bash}{Сценарии Bash}}\label{Bash-Scripting}}
 
 В руководстве рассмотрено много команд и концепций. Большинство
@@ -1337,7 +1344,7 @@ bash simple-script.sh
 оговорено иное.
 
 \hypertarget{Variable-declarations}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{Variable-declarations}{}Объявления
+\subsection{\texorpdfstring{\protect\hyperlink{Variable-declarations}{}Объявления
 переменных}{Объявления переменных}}\label{Variable-declarations}}
 
 \begin{minted}{bash}
@@ -1353,7 +1360,7 @@ echo 'Но не в строки, ограниченные одинарными �
 просто, поэтому не будем тратить много времени на них.
 
 \hypertarget{Built-In-Variables}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{Built-In-Variables}{}Встроенные
+\subsection{\texorpdfstring{\protect\hyperlink{Built-In-Variables}{}Встроенные
 переменные}{Встроенные переменные}}\label{Built-In-Variables}}
 
 Есть несколько встроенных переменных, которые можно использовать в
@@ -1371,7 +1378,7 @@ echo $?  # Выводит код завершения предыдущего п�
 \end{minted}
 
 \hypertarget{Command-Line-Arguments}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{Command-Line-Arguments}{}Аргументы
+\subsection{\texorpdfstring{\protect\hyperlink{Command-Line-Arguments}{}Аргументы
 командной
 строки}{Аргументы командной строки}}\label{Command-Line-Arguments}}
 
@@ -1394,7 +1401,7 @@ echo "Скрипт $0 вычисляет: " $(($1+$2))
 % Итак, использование встроенных переменных внутри скриптов возможно.
 
 \hypertarget{Reading-user-input}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{Reading-user-input}{}Чтение
+\subsection{\texorpdfstring{\protect\hyperlink{Reading-user-input}{}Чтение
 пользовательского
 ввода}{Чтение пользовательского ввода}}\label{Reading-user-input}}
 
@@ -1424,7 +1431,7 @@ read -s user_input
 \end{minted}
 
 \hypertarget{for-loops}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{for-loops}{}Циклы
+\subsection{\texorpdfstring{\protect\hyperlink{for-loops}{}Циклы
 for}{Циклы for}}\label{for-loops}}
 
 Синтаксис цикла в bash следующий.
@@ -1466,7 +1473,7 @@ done
 \end{minted}
 
 \hypertarget{if-then-statements}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{if-then-statements}{}Оператор
+\subsection{\texorpdfstring{\protect\hyperlink{if-then-statements}{}Оператор
 if-then}{Оператор if-then}}\label{if-then-statements}}
 
 Оператор оставлен \texttt{if-then} напоследок, потому что он немного сложен
@@ -1558,7 +1565,7 @@ done
 \end{minted}
 
 \hypertarget{Functions}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{Functions}{}Функции}{Функции}}\label{Functions}}
+\subsection{\texorpdfstring{\protect\hyperlink{Functions}{}Функции}{Функции}}\label{Functions}}
 
 Язык программирования -- это не язык программирования, если в нем нет
 функций. Рассмотрим базовый синтаксис для создания и последующего вызова
@@ -1596,7 +1603,7 @@ echo $?
 сценариев bash. Пишите свои скрипты, и будет вам счастье!
 
 \hypertarget{Virtual-Machines-and-SSH-Protocol}{%
-\subsection{\texorpdfstring{\protect\hyperlink{Virtual-Machines-and-SSH-Protocol}{}Виртуальные
+\section{\texorpdfstring{\protect\hyperlink{Virtual-Machines-and-SSH-Protocol}{}Виртуальные
 машины и протокол
 SSH}{Виртуальные машины и протокол SSH}}\label{Virtual-Machines-and-SSH-Protocol}}
 
@@ -1688,7 +1695,7 @@ ssh -p 22 root@157.230.167.2
 Если все сделано правильно, команда подключит текущий терминал к новому VPS без вопросов.
 
 \hypertarget{Permanently-Add-Keys-to-ssh-agent}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{Permanently-Add-Keys-to-ssh-agent}{}Добавление
+\subsection{\texorpdfstring{\protect\hyperlink{Permanently-Add-Keys-to-ssh-agent}{}Добавление
 постоянных ключей в
 ssh-agent}{Добавление постоянных ключей в ssh-agent}}\label{Permanently-Add-Keys-to-ssh-agent}}
 
@@ -1727,7 +1734,7 @@ Host *
 к удаленным соединениям.
 
 \hypertarget{From-local-computer-to-remote-machine}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{From-local-computer-to-remote-machine}{}С
+\subsection{\texorpdfstring{\protect\hyperlink{From-local-computer-to-remote-machine}{}С
 локального компьютера на
 удаленный}{С локального компьютера на удаленный}}\label{From-local-computer-to-remote-machine}}
 
@@ -1744,7 +1751,7 @@ scp -r sample-file.txt root@157.230.167.2:~/
 указывается после \texttt{:}, которое после IP-адреса.
 
 \hypertarget{From-remote-machine-to-local-computer}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{From-remote-machine-to-local-computer}{}С
+\subsection{\texorpdfstring{\protect\hyperlink{From-remote-machine-to-local-computer}{}С
 удаленного компьютера на
 локальный}{С удаленного компьютера на локальный}}\label{From-remote-machine-to-local-computer}}
 
@@ -1757,7 +1764,7 @@ scp -r root@157.230.167.2:~/sample-file.txt ~/Downloads
 \texttt{\textasciitilde{}/Downloads} локального компьютера.
 
 \hypertarget{Downloading-packages-to-your-remote-machine-with-wget}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{Downloading-packages-to-your-remote-machine-with-wget}{}Загрузка
+\subsection{\texorpdfstring{\protect\hyperlink{Downloading-packages-to-your-remote-machine-with-wget}{}Загрузка
 пакетов на удаленный компьютер с помощью
 wget}{Загрузка пакетов на удаленный компьютер с помощью wget}}\label{Downloading-packages-to-your-remote-machine-with-wget}}
 
@@ -1776,7 +1783,7 @@ wget -O my-custom-picture.jpg https://cdn.orvis.com/images/DBS_SibHusky.jpg
 можно ее можно обрабатывать различными командами и программами.
 
 \hypertarget{Using-VSCode-with-your-remote-machine}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{Using-VSCode-with-your-remote-machine}{}Использование VSCode через удаленное
+\subsection{\texorpdfstring{\protect\hyperlink{Using-VSCode-with-your-remote-machine}{}Использование VSCode через удаленное
 соединение}{Использование VSCode через удаленное соединение}}\label{Using-VSCode-with-your-remote-machine}}
 
 Конечно, можно использовать текстовый редактор Vim для решения всех
@@ -1816,7 +1823,7 @@ rmate sample-file.txt
 \end{minted}
 
 \hypertarget{Networking-on-Command-Line}{%
-\subsection{\texorpdfstring{\protect\hyperlink{Networking-on-Command-Line}{}Управление
+\section{\texorpdfstring{\protect\hyperlink{Networking-on-Command-Line}{}Управление
 сетью в командной
 строке}{Управление сетью в командной строке}}\label{Networking-on-Command-Line}}
 
@@ -1829,7 +1836,7 @@ rmate sample-file.txt
 знаний можно получить, читая этот раздел.
 
 \hypertarget{Your-home-network-and-the-internet}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{Your-home-network-and-the-internet}{}Сеть
+\subsection{\texorpdfstring{\protect\hyperlink{Your-home-network-and-the-internet}{}Сеть
 в доме и доступ в
 Интернет}{Сеть в доме и доступ в Интернет}}\label{Your-home-network-and-the-internet}}
 
@@ -2089,7 +2096,7 @@ IP-адрес представляет все устройства в сети, 
 командами bash, которые позволяют диагностировать проблемы с настройкой сети.
 
 \hypertarget{ifconfig}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{ifconfig}{}Утилита
+\subsection{\texorpdfstring{\protect\hyperlink{ifconfig}{}Утилита
 ifconfig}{Утилита ifconfig}}\label{ifconfig}}
 
 Команда \texttt{ifconfig}\footnote{В современных Linux-дистрибутивах намного чаще используется более мощная утилита \texttt{ip} пакета \texttt{iproute2}.} печатает некоторую информацию о настройке локальной сети.
@@ -2148,7 +2155,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 увеличиваться.
 
 \hypertarget{ping}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{ping}{}Программа
+\subsection{\texorpdfstring{\protect\hyperlink{ping}{}Программа
 ping}{Программа ping}}\label{ping}}
 
 Программа \texttt{ping} -- утилита, используемая для проверки
@@ -2181,7 +2188,7 @@ rtt min/avg/max/mdev = 34.427/38.183/49.912/5.885 ms
 сети и может подключиться к \texttt{thediygolfer.com}.
 
 \hypertarget{traceroute}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{traceroute}{}Программа
+\subsection{\texorpdfstring{\protect\hyperlink{traceroute}{}Программа
 traceroute}{Программа traceroute}}\label{traceroute}}
 
 Команда traceroute -- отличный способ понять, как компьютер находит
@@ -2239,7 +2246,7 @@ Spectrum в Канзасе, подключается к серверу в Чик
 %\href{https://whatismyipaddress.com/ip-lookup}{этом онлайн-сервисе}.
 
 \hypertarget{netstat}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{netstat}{}Программа
+\subsection{\texorpdfstring{\protect\hyperlink{netstat}{}Программа
 netstat}{Программа netstat}}\label{netstat}}
 
 Эта команда предоставляет информацию о различных сетевых протоколах
@@ -2304,7 +2311,7 @@ tcp        0      0 zubuntu:35098           stackoverflow.com:https
 У каждой вкладки свой сокет.
 
 \hypertarget{dig-host-whois}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{dig-host-whois}{}Программы
+\subsection{\texorpdfstring{\protect\hyperlink{dig-host-whois}{}Программы
 dig/host/whois}{Программы dig/host/whois}}\label{dig-host-whois}}
 
 Программы \texttt{dig}, \texttt{host} и \texttt{whois} помогают получать
@@ -2449,7 +2456,7 @@ URL of the ICANN Whois Inaccuracy Complaint \
 эти команды также полезны для получения информации о вашей сети и о внешних сетях.
 
 \hypertarget{Process-Management-and-System-Management}{%
-\subsection{\texorpdfstring{\protect\hyperlink{Process-Management-and-System-Management}{}Управление
+\section{\texorpdfstring{\protect\hyperlink{Process-Management-and-System-Management}{}Управление
 процессами и
 системой}{Управление процессами и системой}}\label{Process-Management-and-System-Management}}
 
@@ -2470,7 +2477,7 @@ URL of the ICANN Whois Inaccuracy Complaint \
 \end{itemize}
 
 \hypertarget{What-is-a-Process}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{What-is-a-Process}{}Что
+\subsection{\texorpdfstring{\protect\hyperlink{What-is-a-Process}{}Что
 такое процесс?}{Что такое процесс?}}\label{What-is-a-Process}}
 
 Если не вдаваться в технические подробности, процесс -- это что-то
@@ -2499,7 +2506,7 @@ URL of the ICANN Whois Inaccuracy Complaint \
 операционной системы в работоспособном состоянии.
 
 \hypertarget{Processes-Behind-the-Scenes}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{Processes-Behind-the-Scenes}{}Закулисы
+\subsection{\texorpdfstring{\protect\hyperlink{Processes-Behind-the-Scenes}{}Закулисы
 процессов}{Закулисы процессов}}\label{Processes-Behind-the-Scenes}}
 
 Большинство команд управления процессами связаны друг с другом логически, и следует
@@ -2575,7 +2582,7 @@ StackOverflow}. Программисты на языке C, вероятно, з
 контроль над процессами.
 
 \hypertarget{Foreground-vs-Background-Processes}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{Foreground-vs-Background-Processes}{}Процессы
+\subsection{\texorpdfstring{\protect\hyperlink{Foreground-vs-Background-Processes}{}Процессы
 переднего плана и фоновые
 процессы}{Процессы переднего плана и фоновые процессы}}\label{Foreground-vs-Background-Processes}}
 
@@ -2712,7 +2719,7 @@ fg %1
 \end{minted}
 
 \hypertarget{ps-and-top-commands-system-performance-management}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{ps-and-top-commands-system-performance-management}{}Команды
+\subsection{\texorpdfstring{\protect\hyperlink{ps-and-top-commands-system-performance-management}{}Команды
 ps и top (управление общей производительностью
 системы)}{Команды ps и top (управление общей производительностью системы)}}\label{ps-and-top-commands-system-performance-management}}
 
@@ -2940,7 +2947,7 @@ ID \texttt{22435}, надо задать фильтр. Делается это �
 компьютер.
 
 \hypertarget{lsof}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{lsof}{}Программ
+\subsection{\texorpdfstring{\protect\hyperlink{lsof}{}Программ
 lsof}{Программ lsof}}\label{lsof}}
 
 Команда lsof используется для вывода списка открытых процессом файлов.
@@ -2966,7 +2973,7 @@ lsof +f -- /media/my_hard_drive
 \end{minted}
 
 \hypertarget{free-time}{%
-\subsubsection{\texorpdfstring{\protect\hyperlink{free-time}{}Команды
+\subsection{\texorpdfstring{\protect\hyperlink{free-time}{}Команды
 free и time}{Команды free и time}}\label{free-time}}
 
 Команда free -- это быстрый способ оценки ресурсы вашей системы в
@@ -3004,15 +3011,14 @@ Google Chrome) и отследит, сколько реального, поль�
 производительности, но для грубой оценки wait вполне подходит.
 
 \hypertarget{Conclusion}{%
-  \section*{\texorpdfstring{\protect\hyperlink{Conclusion}{}Заключение}{Заключение}}\label{Conclusion}}
-\addcontentsline{toc}{section}{Заключение}
+  \chapter*{Заключение}\label{Conclusion}}
 
 Трудно в это поверить, но данный пост автор таки закончил. К данному
 моменту у вас должен сформироваться набор навыков <<средне-продвинутого>> уровня использования оболочки bash, вы теперь можете изучить самостоятельно, что такое users, groups, и
 permissions. Надеюсь, что у вас рано или поздно будет высокий уровень
 понимания bash и даже Linux.
 
-\section{Методические указания для выполнения лабораторной работы}
+\chapter{Методические указания для выполнения лабораторной работы}
 
 \emph{Целью} лабораторной работы является разработка программы"=скрипта на языке bash, моделирующей типичные задачи, встречающиеся в процессе разработки и администрирования программного обеспечения. Студенту для достижения цели необходимо решит следующие \emph{задачи}:
 \begin{enumerate}
@@ -3024,7 +3030,7 @@ permissions. Надеюсь, что у вас рано или поздно бу�
 \item Подготовить отчет.
 \end{enumerate}
 
-\subsection{Перечень вариантов задания}
+\section{Перечень вариантов задания}
 
 Сначала приведем \emph{варианты} заданий, затем рассмотрим пример решения задачи. В большинстве задач, если не оговорено обратное, надо выполнить манипуляции над объектами файловой системы в текущем каталоге или каталоге, заданном при помощи параметров программы, и его подкаталогов. Операции над объектами, заданными в вариантах лабораторных работ, можно комбинировать, например, скомбинировав варианты \ref{v2} и \ref{v3} можно не только конвертировать формат, и при этом освободить место на диске, но и добавить текст в свои изображения.
 \begin{enumerate}
@@ -3043,7 +3049,7 @@ write(1, " |\textbf{DSCN4063.jpg}|\t\t\t projects\n", 26 DSCN4063.jpg			 project
 \end{enumerate}
 
 
-\subsection{Порождение конфигурации настройки сетевого адаптера узлов кластера}
+\section{Порождение конфигурации настройки сетевого адаптера узлов кластера}
 
 Рассмотрим пример использования командной оболочки bash для настройки узлов учебного вычислительного кластера. В каждом узле необходимо установить содержимое ряда файлов. Исходными данными является файл, содержащий записи, каждая соответствует конкретному узлу кластера. Каждая запись содержит MAC-адрес сетевого устройства, IPv4-адрес и, иногда, дополнительное имя узла. Имя узла синтезируется из последней части IPv4-адреса, или, если указано специально, имени из записи. Причем, в файл \texttt{/etc/hosts} должен содержать и синтетическое и специально (если указано) имя. Кроме файла со списком узлов также будет задан конфигурационный файл с указанием общих настроек для каждого узла. Этот файл сделаем просто сценарием \texttt{bash}, где значения настроек обозначим экспортируемыми переменными.
 
@@ -3151,7 +3157,7 @@ node180 slots=2
 #. . . . . . . .
 \end{minted}
 
-\subsection{Реализация сценария конфигурирования узлов кластера}
+\section{Реализация сценария конфигурирования узлов кластера}
 Программирование в bash глобально не отличается от программирования на языках класса Pascal, Python и им подобным. Единственное существенное отличие -- это то, что язык является чисто интерпретируемым, т.е. каждая строка программы, сначала испытывает трансформацию: вместо переменных \texttt{\$<имя переменной>} подставляются значения этих переменных, потом происходит либо запуск команды, которой соответствует строка, или выполняется часть сложной конструкции типа <<if-then>>. Именно эти особенности <<добавляют лишние>> точки с запятой в оператор <<if>>. Приведем полный код решения, не разрывая абзацами, будем вставлять комментарии в прямо в программу.
 \begin{minted}{bash}
 #!/bin/bash

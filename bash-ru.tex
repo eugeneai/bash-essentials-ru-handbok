@@ -1,7 +1,7 @@
-\documentclass[a4paper,12pt,final]{book}
-% \usepackage[a4paper,firacode,smalltitles,handbook,microtyping]{subook}
+\documentclass[a4paper,12pt,final,openany]{extbook}
+\usepackage[a4paper,firacode,handbook,microtyping,cpcaption]{subook}
 % \usepackage[a4paper,firacode,smalltitles,732,microtyping]{subook}
-\RequirePackage{subook}
+% \RequirePackage{subook}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -23,16 +23,107 @@
 \usemintedstyle{tango}
 
 \begin{document}
-\mainmatter
 \thispagestyle{empty}
-$ $
+\begin{center}
+  \small Министерство науки и образования Российской Федерации\\
+Институт математики и информационных технологий\\
+ФБУН <<Иркутский государственный университет>>\\
+Институт информационных технологий и анализа данных\\
+ФБУН  «Иркутский национальный исследовательский технический университет»
+
+\end{center}
 \vfill
+\begin{center}
+  {\sutitlefont
+  Голлвитцер~З., Черкашин~Е.~А.\\[2em]
+  {
+  \Large\bfseries Ускоренный курс элементарного Bash\\
+}
+The Ultimate Bash Crash Course}\\
+\vspace{1em}
+\emph{учебное пособие}
+\end{center}
+\vspace{8em}
+\vfill
+\begin{center}
+  Иркутск\;--\;2022
+\end{center}
+\mbox{}
+\clearpage
+\thispagestyle{empty}
+\noindent УДК \ldots (075.8) \\ % 681.3(075.8)\\ % (075.8) = Handbook
+% \noindent УДК~165:681.3.06+62-52\\
+\noindent ББК \ldots \\ % 32.97я73\\
+% ББК 87.4:32.973-01+32.813\\ % monograph
+\noindent\mbox{}\hspace{2em}\ldots % К63
+\begin{center}\small
+Печатается по решению \ldots % ученого совета ИМЭИ\\[2ex]
+%\bfseries Издание выходит в рамках Программы\\
+%стратегического развития ФГБОУ ВПО <<ИГУ>>\\
+%на 2012--2016 гг., проект Р121-02-001
+\end{center}
+\vspace{0.5ex}
+\begin{center}\small
+ % \textbf{Авторы:}\\
+ % Л.~В.~Рожина (часть 1 глава 1"=5), А.~А.~Ветров (приложения к части 1),\\
+ % А.~Е.~Хмельнов (часть 2), Р.~К.~Фёдоров (часть 3), Е.~А.~Черкашин (часть 4)
+  %\textbf{Рецензенты:} \\
+  %д-р~физ.-мат.~наук~{\em В.~И.~Сажин}, канд.~техн.~наук~{\em А.~О.~Шигаров}\\
+\end{center}
+\vfill
+\noindent\begin{minipage}[t]{2em}
+\noindent\mbox{}\\
+\ldots  % К63
+\end{minipage}%
+\begin{minipage}[t]{0.95\linewidth}
+\setlength{\parindent}{5ex}
+% Компьютерные науки\;: учеб. пособие. В 4 ч. -- Иркутск\;: Из-во ИГУ, 2014.
 
-\noindent Copyright © 2019 Зак Голлвитцер\\
-Copyright © 2021 Евгений Черкашин
+%\noindent{\bfseries Черкашин~Е.~А.}
 
+Ускоренный курс элементарного Bash /~З.~Голлвитцер,~Е.~А.~Черкашин~-- \pageref{LastPage}~c.
+
+{\bfseries ISBN 978-X-XXXX-XXXX-X} % (ч. 4)
+
+% {\bfseries ISBN 978-5-9624-1251-1}
+\vspace{2ex}
+
+\begingroup\footnotesize\parskip0pt
+\vspace{1ex}
+
+В предлагаемом \textbf{проекте учебного пособия} рассматривается проблематика управления операционной Linux системой при помощи команд оболочки (shell) bash, а также внешних команд. Пособие организовано как руководство к последовательному ознакомлению (tutorial). Пособие является переводом постов первого автора с добавлением методических указаний по одной лабораторной работе, посвященной разработке сценариев на языке bash.
+
+Предназначено для студентов вузов, обучающихся по направлениям «Математика», «Прикладная математика и информатика», «Математическое обеспечение и администрирование информационных систем», «Информационная безопасность», <<Вычислительные комплексы системы и сети>>, <<Автоматизированные системы управления>> и им аналогичным.
+
+\mbox{}
+\endgroup
+\end{minipage}
+\mbox{}\hspace{0.7\linewidth}
+\begin{minipage}{0.3\linewidth}\footnotesize\raggedleft
+\noindent УДК \ldots 0XXX (075.8) \\ % 681.3 (075.8)\\  % 075.8 = handbook
+\noindent ББК \ldots % 32.97я73
+\end{minipage}
+
+%Outfit.....
+
+\vfill
+\noindent\begin{minipage}[t]{0.35\linewidth}\footnotesize
+\noindent ISBN 978-X-XXXX-XXXX-X\\
+\end{minipage}%
+\hspace{6em}
+\begin{minipage}[t]{0.65\linewidth}\footnotesize
+\begin{itemize}
+\setlength{\itemsep}{-0.5ex}
+\setlength{\parsep}{0pt}
+\item[\copyright{}] 2020 Зак Голлвитцер, 2020
+\item[\copyright{}] 2022 Евгений Александрович Черкашин
+%\item[\copyright{}] Институт динамики систем и теории управления СО РАН, 2014
+\end{itemize}
+\end{minipage}
+\mbox{}
 \clearpage
 
+\mainmatter
 \setcounter{tocdepth}{1}
 \renewcommand{\contentsname}{Содержание}
 \tableofcontents
@@ -42,7 +133,7 @@ Copyright © 2021 Евгений Черкашин
 \chapter*{Предисловие от составителя пособия}
 % \addcontentsline{toc}{section}{Предисловие от составителя пособия}
 
-Данный методический материал создан путем перевода текста, опубликованному в виде \href{https://zachgoll.github.io/blog/2019/bash-essentials/}{данного поста} его первоначальным автором Заком Голлвитцером (Zach Gollwitzer). Перевод осуществлен при помощи системы CAT (Computer Aided Translation) OmegaT и единственного на данный момент бесплатного сервера \href{https://mymemory.translated.net/}{MyMemory}. Автор перевода, также по совмещению являющийся соавтором данного пособия, подверг первоначальный стиль существенной переработке, стараясь сделать его в большей степени соответствующим к стандартам публикации учебных пособий в образовательной системе РФ, но сохраняя, по возможности, уместные эмоциональные моменты. Не все конечно удалось довести до некоторого совершенства, поэтому оставлю проект открытым к редактированию на сайте \href{https://www.overleaf.com/project/602cc04c00be7fbbe118f862}{Overleaf} для дальнейшего редактирования и совершенствования стиля.
+Данный методический материал создан путем перевода текста, опубликованному в виде \href{https://zach-gollwitzer.medium.com/the-ultimate-bash-crash-course-cb598141ad03}{данного поста} его первоначальным автором Заком Голлвитцером (Zach Gollwitzer). Перевод осуществлен при помощи системы CAT (Computer Aided Translation) OmegaT и единственного на данный момент бесплатного сервера \href{https://mymemory.translated.net/}{MyMemory}. Автор перевода, также по совмещению являющийся соавтором данного пособия, подверг первоначальный стиль существенной переработке, стараясь сделать его в большей степени соответствующим к стандартам публикации учебных пособий в образовательной системе РФ, но сохраняя, по возможности, уместные эмоциональные моменты. Не все конечно удалось довести до некоторого совершенства, поэтому оставлю проект открытым к редактированию на сайте \href{https://www.overleaf.com/project/602cc04c00be7fbbe118f862}{Overleaf} для дальнейшего редактирования и совершенствования стиля.
 
 Пособие состоит из трех разделов, первые два -- собственно адаптация оригинального текста, в который не добавлялся новый материал, третий раздел содержит методический материал для выполнения лабораторной работы, направленной на развитие навыков разработки скриптов (сценариев) в командной оболочке bash. Представленный материал далеко не полностью покрывает такою обширную область разработки сценариев bash, но что необходимо выделить как положительный момент -- практическая направленность. Зак Голлвитцер на собственном опыте показывает решение ряда задач, с которым он регулярно сталкивается в своей деятельности, в том числе администрирование собственного домашнего компьютера с операционной системой Linux/Mac. Зак учит читателя не только основным командам, запускаемым из оболочки, но и как искать справочную по ним информацию: использовать программу man и поисковую систему Google. В тексте Зак обычно говорит о командах \texttt{bash}, например \texttt{find}, но надо заметить, что прямого отношения к оболочке \texttt{bash} они не имеют. Они являются отдельными программами, которые можно запускать и из программ на языках Python и C++.  Чаще всего эти команды запускаются из командной строки \texttt{bash}, что создает впечатление, что они являются её неотъемлемой частью.
 
@@ -3060,7 +3151,7 @@ export HOSTNAMEPREF=node       # Префикс имени узла
 export NETMASK=24              # Маска сети, 255.255.255.0
 export GWSUFF=1                # Часть адреса маршрутизатора
 export NETPREF='172.27.14'     # Сетевая часть адреса
-export DEFAULTGW=$NETPREF.$GW # Шлюз по умолчанию
+export DEFAULTGW=$NETPREF.$GW  # Шлюз по умолчанию
 export DNSV4="172.27.100.5 8.8.8.8"
 export NAMEDDOMAIN=example.com
 # Nework IPv6
@@ -3326,7 +3417,7 @@ echo "# Всего ядер - $totslots" >> $mpifile
 echo "# Всего ядер - $totslots !"
 \end{minted}
 
-Программа отлажена и должна работать правильно. Теперь посмотрим файлы, сгенерированные программой. Начнем с файла \texttt{/etc/hostname} для 180 машины, который предполагается сервером.
+Программа отлажена и должна работать правильно. Теперь посмотрим файлы, сгенерированные программой. Начнем с файла \texttt{/etc/hostname} для 180-й машины, которая является сервером.
 \begin{minted}{text}
 node180
 \end{minted}
@@ -3336,7 +3427,8 @@ node180
 127.0.0.1 localhost localhost.localdomain
 127.0.1.1 server node180
 127.0.1.2 server.localdomain node180.localdomain
-::1 localhost localhost.localdomain server node180 server.localdomain node180.localdomain
+::1 localhost localhost.localdomain server node180 server.localdomain\
+    node180.localdomain
 fd39:470:0db8:3333:172:27:14:180 node180-6 server-6
 2001:470:0db8:3333:172:27:14:180 node180-g server-g
 172.27.14.1 gw node1
